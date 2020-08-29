@@ -21,7 +21,7 @@
             parts.push(d + 'd');
         }
 
-        return parts.join('.');
+        return ' (' + parts.join('.') + ')';
     }
 
     function processNode(node) {
@@ -45,7 +45,7 @@
                 if (isNaN(price)) {
                     return full;
                 }
-                return convert(price) + (end ? end : '');
+                return full + convert(price) + (end ? end : '');
             }
         ).replace(
             /(\d+)p\b/g,
@@ -54,7 +54,7 @@
                 if (isNaN(price)) {
                     return full;
                 }
-                return convert(price / 100);
+                return full + convert(price / 100);
             }
         );
         if (text != replacedText) {
@@ -83,7 +83,7 @@
                                 if (isNaN(price)) {
                                     return full;
                                 }
-                                return convert(price);
+                                return full + convert(price);
                             }
                         );
                         if (text != replacedText) {
